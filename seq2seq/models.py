@@ -5,12 +5,12 @@ from keras.models import Sequential, Model
 from keras.layers import Dense, Dropout, TimeDistributed, Bidirectional, Input
 
 
-'''
+"""
 Papers:
 [1] Sequence to Sequence Learning with Neural Networks (http://arxiv.org/abs/1409.3215)
 [2] Learning Phrase Representations using RNN Encoder-Decoder for Statistical Machine Translation (http://arxiv.org/abs/1406.1078)
 [3] Neural Machine Translation by Jointly Learning to Align and Translate (http://arxiv.org/abs/1409.0473)
-'''
+"""
 
 
 def SimpleSeq2Seq(output_dim, output_length, hidden_dim=None, input_shape=None,
@@ -18,7 +18,7 @@ def SimpleSeq2Seq(output_dim, output_length, hidden_dim=None, input_shape=None,
                   input_length=None, depth=1, dropout=0.0, unroll=False,
                   stateful=False):
 
-    '''
+    """
     Simple model for sequence to sequence learning.
     The encoder encodes the input sequence to vector (called context vector)
     The decoder decodes the context vector in to a sequence of vectors.
@@ -37,7 +37,7 @@ def SimpleSeq2Seq(output_dim, output_length, hidden_dim=None, input_shape=None,
             5 LSTMs will be added to the decoding side.
     dropout : Dropout probability in between layers.
 
-    '''
+    """
 
     if isinstance(depth, int):
         depth = (depth, depth)
@@ -88,7 +88,7 @@ def Seq2Seq(output_dim, output_length, batch_input_shape=None,
             stateful=False, inner_broadcast_state=True, teacher_force=False,
             peek=False, dropout=0.):
 
-    '''
+    """
     Seq2seq model based on [1] and [2].
     This model has the ability to transfer the encoder hidden state to the decoder's
     hidden state(specified by the broadcast_state argument). Also, in deep models
@@ -138,7 +138,7 @@ def Seq2Seq(output_dim, output_length, batch_input_shape=None,
     dropout : Dropout probability in between layers.
 
 
-    '''
+    """
 
     if isinstance(depth, int):
         depth = (depth, depth)
@@ -210,7 +210,7 @@ def AttentionSeq2Seq(output_dim, output_length, batch_input_shape=None,
                      batch_size=None, input_shape=None, input_length=None,
                      input_dim=None, hidden_dim=None, depth=1,
                      bidirectional=True, unroll=False, stateful=False, dropout=0.0,):
-    '''
+    """
     This is an attention Seq2seq model based on [3].
     Here, there is a soft allignment between the input and output sequence elements.
     A bidirection encoder is used by default. There is no hidden state transfer in this
@@ -234,7 +234,7 @@ def AttentionSeq2Seq(output_dim, output_length, batch_input_shape=None,
     alpha = softmax(energy)
     Where a is a feed forward network.
 
-    '''
+    """
 
     if isinstance(depth, int):
         depth = (depth, depth)
